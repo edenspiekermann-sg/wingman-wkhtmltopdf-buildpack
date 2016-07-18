@@ -17,5 +17,5 @@ wget ${WKHTMLTOPDF_URL} -O wkhtmltopdf.tar.xz
 echo "${WKHTMLTOPDF_DOWNLOAD_SHA} *wkhtmltopdf.tar.xz" | sha256sum -c | grep "OK"
 tar xf wkhtmltopdf.tar.xz
 mv wkhtmltox $BIN_PATH/wkhtmltox
-ln -s $BIN_PATH/wkhtmltox/bin/wkhtmltopdf $BIN_PATH/wkhtmltopdf
+ln -s ./wkhtmltox/bin/wkhtmltopdf $BIN_PATH/wkhtmltopdf
 rm -rf $TMP_PATH/wkhtmltopdf
