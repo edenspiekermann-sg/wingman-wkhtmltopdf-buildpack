@@ -6,15 +6,16 @@ set -e
 # Meaning it's possible to choose os/architecture/version of the application.
 BIN_PATH="$1/bin"
 TMP_PATH="$1/tmp"
-WKHTMLTOPDF_URL=${WKHTMLTOPDF_URL:-"http://download.gna.org/wkhtmltopdf/obsolete/linux/wkhtmltopdf-0.11.0_rc1-static-amd64.tar.bz2"}
-WKHTMLTOPDF_DOWNLOAD_SHA=${WKHTMLTOPDF_DOWNLOAD_SHA:-"b20c17284d4c03d81ac6ec3e251201da2b99830c9ac831281c8b5d841e7a6632"}
+WKHTMLTOPDF_URL=${WKHTMLTOPDF_URL:-"http://download.gna.org/wkhtmltopdf/0.12/0.12.3/wkhtmltox-0.12.3_linux-generic-amd64.tar.xz"}
+WKHTMLTOPDF_DOWNLOAD_SHA=${WKHTMLTOPDF_DOWNLOAD_SHA:-"40bc014d0754ea44bb90e733f03e7c92862f7445ef581e3599ecc00711dddcaa"}
 
 mkdir -p $BIN_PATH $TMP_PATH
 cd $TMP_PATH
 mkdir wkhtmltopdf
 cd wkhtmltopdf
-wget ${WKHTMLTOPDF_URL} -O wkhtmltopdf.tar.bz2
-echo "${WKHTMLTOPDF_DOWNLOAD_SHA} *wkhtmltopdf.tar.bz2" | sha256sum -c | grep "OK"
-tar xfj wkhtmltopdf.tar.bz2
-mv wkhtmltopdf-amd64 $BIN_PATH/wkhtmltopdf
+wget ${WKHTMLTOPDF_URL} -O wkhtmltopdf.tar.xz
+echo "${WKHTMLTOPDF_DOWNLOAD_SHA} *wkhtmltopdf.tar.xz" | sha256sum -c | grep "OK"
+tar xf wkhtmltopdf.tar.xz
+mv wkhtmltox $BIN_PATH/wkhtmltox
+ln -s $BIN_PATH/wkhtmltox/bin/wkhtmltopdf $BIN_PATH/wkhtmltopdf
 rm -rf $TMP_PATH/wkhtmltopdf
