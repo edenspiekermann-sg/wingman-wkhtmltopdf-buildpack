@@ -19,3 +19,5 @@ tar xf wkhtmltopdf.tar.xz
 mv wkhtmltox $BIN_PATH/wkhtmltox
 ln $BIN_PATH/wkhtmltox/bin/wkhtmltopdf $BIN_PATH/wkhtmltopdf
 rm -rf $TMP_PATH/wkhtmltopdf
+echo $BIN_PATH
+echo "WKHTMLTOPDF Done"
